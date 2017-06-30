@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android           ="http://schemas.android.com/apk/res/android"
+    android:orientation     ="vertical"
+    android:layout_width    ="match_parent"
+    android:layout_height   ="match_parent">
+
+    <TextView
+        android:layout_width        ="wrap_content"
+        android:layout_height       ="wrap_content"
+        android:layout_marginLeft   ="25dip"
+        android:layout_marginRight  ="25dip"
+        android:layout_marginTop    ="25dip"
+        android:textStyle           ="bold"
+        android:textSize            ="16sp"
+        android:textColor           ="#000000"
+        android:text                ="Amount:"/>
+
+    <EditText
+        android:id                  ="@+id/amount_edt"
+        android:layout_width        ="match_parent"
+        android:layout_height       ="wrap_content"
+        android:layout_marginTop    ="5dip"
+        android:layout_marginLeft   ="20dip"
+        android:layout_marginRight  ="25dip"
+        android:maxLength           ="9"
+        android:inputType           ="numberDecimal"
+        android:hint                ="Enter amount"/>
+
+    <TextView
+        android:id                  ="@+id/printer_options_title"
+        android:layout_width        ="wrap_content"
+        android:layout_height       ="wrap_content"
+        android:layout_marginLeft   ="25dip"
+        android:layout_marginRight  ="25dip"
+        android:layout_marginTop    ="25dip"
+        android:textStyle           ="bold"
+        android:textSize            ="16sp"
+        android:textColor           ="#000000"
+        android:text                ="Receipt:"/>
+
+    <RadioGroup
+        android:id                  ="@+id/printer_options_layout"
+        android:layout_width        ="match_parent"
+        android:layout_height       ="wrap_content"
+        android:layout_marginLeft   ="25dip"
+        android:layout_marginRight  ="25dip">
+
+        <RadioButton
+            android:id              ="@+id/receipt_do_not_print_radio"
+            android:layout_width    ="wrap_content"
+            android:layout_height   ="wrap_content"
+            android:layout_marginTop="5dip"
+            android:text            ="Do not print"
+            android:checked         ="true"/>
+
+        <RadioButton
+            android:id              ="@+id/receipt_print_automatically_radio"
+            android:layout_width    ="wrap_content"
+            android:layout_height   ="wrap_content"
+            android:text            ="Print automatically"/>
+
+        <RadioButton
+            android:id              ="@+id/receipt_after_confirmation_radio"
+            android:layout_width    ="wrap_content"
+            android:layout_height   ="wrap_content"
+            android:text            ="Print after confirmation"/>
+
+        <RadioButton
+            android:id              ="@+id/receipt_only_merchant_copy_radio"
+            android:layout_width    ="wrap_content"
+            android:layout_height   ="wrap_content"
+            android:text            ="Print only merchant copy"/>
+
+    </RadioGroup>
+
+</LinearLayout>
