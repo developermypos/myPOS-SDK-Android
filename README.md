@@ -180,7 +180,7 @@ mPOSHandler.reprintReceipt();
 Before using terminal for a first time the SDK has to initiate Terminal activation, which will setup terminal for processing transaction, setting up Terminal ID, Merchant ID etc.
 
 ```Java
-mPOSHandler.reprintReceipt();
+mPOSHandler.activate();
 ```
 
 ## Update terminal software
@@ -188,11 +188,11 @@ mPOSHandler.reprintReceipt();
 Each time terminal processing transaction, processor host checks for existing pending updates, and inform terminal if any. In that case by this method software update is activated, and terminal is going in the update mode.
 
 ```Java
-mPOSHandler.reprintReceipt();
+mPOSHandler.update();
 ```
 
 ## Deactivate terminal
 
 ```Java
-mPOSHandler.reprintReceipt();
+mPOSHandler.deactivate();
 ```
