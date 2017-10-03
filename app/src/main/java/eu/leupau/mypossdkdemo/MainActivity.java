@@ -22,7 +22,10 @@ import java.util.UUID;
 import eu.leupau.icardpossdk.BluetoothDevicesDialog;
 import eu.leupau.icardpossdk.ConnectionListener;
 import eu.leupau.icardpossdk.Currency;
+import eu.leupau.icardpossdk.Language;
 import eu.leupau.icardpossdk.POSHandler;
+import eu.leupau.icardpossdk.POSInfoListener;
+import eu.leupau.icardpossdk.ReceiptData;
 import eu.leupau.icardpossdk.TransactionData;
 
 public class MainActivity extends Activity implements View.OnClickListener{
@@ -34,12 +37,14 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     private TextView    mStatus;
     private TextView    mTerminalType;
+    private Button      mConnectBtn;
     private Button      mPurchaseBtn;
     private Button      mRefundBtn;
     private Button      mDeactivateBtn;
     private Button      mActivateBtn;
     private Button      mUpdateBtn;
     private Button      mReprintBtn;
+    private Button      mPrintBtn;
 
     private POSHandler mPOSHandler;
 
@@ -52,22 +57,29 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         mStatus         = (TextView) findViewById(R.id.status);
         mTerminalType   = (TextView) findViewById(R.id.terminal_connection_type);
+        mConnectBtn     = (Button) findViewById(R.id.connect_btn);
         mPurchaseBtn    = (Button) findViewById(R.id.purchase_btn);
         mRefundBtn      = (Button) findViewById(R.id.refund_btn);
         mDeactivateBtn  = (Button) findViewById(R.id.deactivate_btn);
         mActivateBtn    = (Button) findViewById(R.id.activate_btn);
         mUpdateBtn      = (Button) findViewById(R.id.update_btn);
         mReprintBtn     = (Button) findViewById(R.id.reprint_receipt_btn);
+        mPrintBtn       = (Button) findViewById(R.id.print_receipt_btn);
 
+        mConnectBtn.setOnClickListener(this);
         mPurchaseBtn.setOnClickListener(this);
         mRefundBtn.setOnClickListener(this);
         mDeactivateBtn.setOnClickListener(this);
         mActivateBtn.setOnClickListener(this);
         mUpdateBtn.setOnClickListener(this);
         mReprintBtn.setOnClickListener(this);
-        findViewById(R.id.connect_btn).setOnClickListener(this);
+        mPrintBtn.setOnClickListener(this);
 
-        POSHandler.setCurrency(Currency.EUR);
+        ( (TextView) findViewById(R.id.version)).setText("v. " + POSHandler.SDK_VERSION);
+
+        POSHandler.setCurrency(Currency.HRK);
+        POSHandler.setLanguage(Language.BULGARIAN);
+        POSHandler.setDefaultReceiptConfig(POSHandler.RECEIPT_PRINT_ONLY_MERCHANT_COPY);
         mPOSHandler = POSHandler.getInstance();
 
         setEnabled(false);
@@ -75,6 +87,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         checkPermissions();
 
         registerReceiver(mReceiver, new IntentFilter(BluetoothDevice.ACTION_ACL_DISCONNECTED));
+
+        setPosInfoListener();
 
         mToast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
     }
@@ -115,6 +129,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         mActivateBtn.setEnabled(enabled);
         mUpdateBtn.setEnabled(enabled);
         mReprintBtn.setEnabled(enabled);
+        mPrintBtn.setEnabled(enabled);
     }
 
     private void setConnectionListener(){
@@ -136,9 +151,23 @@ public class MainActivity extends Activity implements View.OnClickListener{
         });
     }
 
+    private void setPosInfoListener(){
+        mPOSHandler.setPOSInfoListener(new POSInfoListener() {
+            @Override
+            public void onPOSInfoReceived(final int command, final int status, final String description) {
+                // handle pos info events here
+            }
+
+            @Override
+            public void onTransactionComplete(final TransactionData transactionData) {
+                // handle purchase and refund transactions complete here
+            }
+        });
+    }
+
     @Override
     public void onClick(View view) {
-        if( view.getId() == R.id.connect_btn ){
+        if( view.getId() == mConnectBtn.getId()){
             BluetoothDevicesDialog dialog = new BluetoothDevicesDialog(this);
             dialog.show();
             return;
@@ -156,20 +185,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
         }
 
         if( view.getId() == mPurchaseBtn.getId() ){
-            mPOSHandler.openPaymentActivity(
-                    MainActivity.this /*activity*/,
-                    REQUEST_CODE_MAKE_PAYMENT /*requestCode*/,
-                    "10.50" /*amount*/,
-                    UUID.randomUUID().toString()/*transaction reference*/
-            );
+            paymentViaActivity();
         }
         else if( view.getId() == mRefundBtn.getId() ){
-            mPOSHandler.openRefundActivity(
-                    MainActivity.this /*activity*/,
-                    REQUEST_CODE_MAKE_REFUND /*requestCode*/,
-                    "10.50" /*amount*/,
-                    UUID.randomUUID().toString()/*transaction reference*/
-            );
+            refundViaActivity();
         }
         else if( view.getId() == mDeactivateBtn.getId() ){
             mPOSHandler.deactivate();
@@ -183,6 +202,58 @@ public class MainActivity extends Activity implements View.OnClickListener{
         else if( view.getId() == mReprintBtn.getId() ){
             mPOSHandler.reprintReceipt();
         }
+        else if( view.getId() == mPrintBtn.getId() ){
+            ReceiptData receiptData = new ReceiptData();
+            receiptData.addLogo(1);
+            receiptData.addEmptyRow();
+            receiptData.addRow("CENTER", ReceiptData.Align.CENTER, ReceiptData.FontSize.SINGLE);
+            receiptData.addEmptyRow();
+            receiptData.addRow("LEFT", ReceiptData.Align.LEFT, ReceiptData.FontSize.SINGLE);
+            receiptData.addRow("RIGHT", ReceiptData.Align.RIGHT, ReceiptData.FontSize.SINGLE);
+            receiptData.addEmptyRow();
+            receiptData.addRow("LEFT DOUBLE", ReceiptData.Align.LEFT, ReceiptData.FontSize.DOUBLE);
+            receiptData.addRow("RIGHT DOUBLE", ReceiptData.Align.RIGHT, ReceiptData.FontSize.DOUBLE);
+            receiptData.addRow("CENTER DOUBLE", ReceiptData.Align.CENTER, ReceiptData.FontSize.DOUBLE);
+            receiptData.addRow("============================", ReceiptData.Align.CENTER, ReceiptData.FontSize.SINGLE);
+            receiptData.addRow("============================", ReceiptData.Align.CENTER, ReceiptData.FontSize.SINGLE);
+            receiptData.addEmptyRow();
+            receiptData.addEmptyRow();
+            mPOSHandler.printReceipt(receiptData);
+        }
+    }
+
+    private void paymentViaActivity(){
+        mPOSHandler.openPaymentActivity(
+                MainActivity.this /*activity*/,
+                REQUEST_CODE_MAKE_PAYMENT /*requestCode*/,
+                "10.50" /*amount*/,
+                UUID.randomUUID().toString()/*transaction reference*/
+        );
+    }
+
+    private void directPayment(){
+        mPOSHandler.purchase(
+                "10.50" /*amount*/,
+                UUID.randomUUID().toString()/*transaction reference*/,
+                POSHandler.RECEIPT_DO_NOT_PRINT /*receipt configuration*/
+        );
+    }
+
+    private void refundViaActivity(){
+        mPOSHandler.openRefundActivity(
+                MainActivity.this /*activity*/,
+                REQUEST_CODE_MAKE_REFUND /*requestCode*/,
+                "" /*amount*/,
+                UUID.randomUUID().toString()/*transaction reference*/
+        );
+    }
+
+    private void directRefund(){
+        mPOSHandler.refund(
+                "10.50" /*amount*/,
+                UUID.randomUUID().toString()/*transaction reference*/,
+                POSHandler.RECEIPT_DO_NOT_PRINT /*receipt configuration*/
+        );
     }
 
     @Override
@@ -190,9 +261,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
         if( requestCode == REQUEST_CODE_MAKE_PAYMENT && resultCode == RESULT_OK) {
             TransactionData transactionData = data.getParcelableExtra(POSHandler.INTENT_EXTRA_TRANSACTION_DATA);
             showTransactionDataAlert(transactionData);
+            // handle transaction data, result of payment via activity
         }
         else if( requestCode == REQUEST_CODE_MAKE_REFUND  && resultCode == RESULT_OK){
-
+            TransactionData transactionData = data.getParcelableExtra(POSHandler.INTENT_EXTRA_TRANSACTION_DATA);
+            // handle transaction data, result of refund via activity
         }
     }
 

@@ -50,7 +50,7 @@
             android:layout_width    ="200dip"
             android:layout_height   ="wrap_content"
             android:layout_below    ="@+id/terminal_connection_type"
-            android:layout_marginTop="20dip"
+            android:layout_marginTop="15dip"
             android:layout_centerHorizontal="true"
             android:text            ="Connect device"
             android:background      ="@drawable/button_selector"/>
@@ -60,7 +60,7 @@
             android:layout_width    ="200dip"
             android:layout_height   ="wrap_content"
             android:layout_below    ="@+id/connect_btn"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="8dip"
             android:layout_centerHorizontal="true"
             android:text            ="Purchase"
             android:background      ="@drawable/button_selector"/>
@@ -70,7 +70,7 @@
             android:layout_width    ="200dip"
             android:layout_height   ="wrap_content"
             android:layout_below    ="@+id/purchase_btn"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="8dip"
             android:layout_centerHorizontal="true"
             android:text            ="REFUND"
             android:background      ="@drawable/button_selector"/>
@@ -80,7 +80,7 @@
             android:layout_width    ="200dip"
             android:layout_height   ="wrap_content"
             android:layout_below    ="@+id/refund_btn"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="8dip"
             android:layout_centerHorizontal="true"
             android:text            ="DEACTIVATE"
             android:background      ="@drawable/button_selector"/>
@@ -90,7 +90,7 @@
             android:layout_width    ="200dip"
             android:layout_height   ="wrap_content"
             android:layout_below    ="@+id/deactivate_btn"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="8dip"
             android:layout_centerHorizontal="true"
             android:text            ="ACTIVATE"
             android:background      ="@drawable/button_selector"/>
@@ -100,7 +100,7 @@
             android:layout_width    ="200dip"
             android:layout_height   ="wrap_content"
             android:layout_below    ="@+id/activate_btn"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="8dip"
             android:layout_centerHorizontal="true"
             android:text            ="UPDATE"
             android:background      ="@drawable/button_selector"/>
@@ -110,9 +110,19 @@
             android:layout_width    ="200dip"
             android:layout_height   ="wrap_content"
             android:layout_below    ="@+id/update_btn"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="8dip"
             android:layout_centerHorizontal="true"
             android:text            ="REPRINT RECEIPT"
+            android:background      ="@drawable/button_selector"/>
+
+        <Button
+            android:id              ="@+id/print_receipt_btn"
+            android:layout_width    ="200dip"
+            android:layout_height   ="wrap_content"
+            android:layout_below    ="@+id/reprint_receipt_btn"
+            android:layout_marginTop="8dip"
+            android:layout_centerHorizontal="true"
+            android:text            ="PRINT EXT"
             android:background      ="@drawable/button_selector"/>
 
     </RelativeLayout>
@@ -152,5 +162,14 @@
         </LinearLayout>
 
     </RelativeLayout>
+
+    <TextView
+        android:id                          ="@+id/version"
+        android:layout_width                ="wrap_content"
+        android:layout_height               ="wrap_content"
+        android:layout_alignParentBottom    ="true"
+        android:layout_alignParentRight     ="true"
+        android:layout_marginRight          ="5dip"
+        android:layout_marginBottom         ="5dip"/>
 
 </RelativeLayout>
