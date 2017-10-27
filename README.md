@@ -83,7 +83,6 @@ private POSHandler  mPOSHandler;
 @Override
 public void onCreate() {
 	super.onCreate();
-	POSHandler.setLanguage(Language.GERMAN);
 	POSHandler.setCurrency(Currency.EUR);
  	mPOSHandler = POSHandler.getInstance();
 }
@@ -114,7 +113,17 @@ POSHandler.getInstance().isTerminalBusy();
 
 ## Connect to terminal
 
-Make sure ACCESS_COARSE_LOCATION permission is given in order to discover available bluetooth devices.
+Choose connection type:
+
+```Java
+POSHandler.setConnectionType(ConnectionType.BLUETOOTH);
+```
+
+```Java
+POSHandler.getInstance().connectDevice(context);
+```
+
+If connection type is set to BLUETOOTH, make sure ACCESS_COARSE_LOCATION permission is given in order to discover available bluetooth devices.
 
 ```Java
 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, 
@@ -122,16 +131,6 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPer
             requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_COARSE_LOCATION);
 }
 ```
-
-Launch this dialog to search and show available bluetooth devices. Only myPOS terminals will be shown in the list.
-
-```Java
-BluetoothDevicesDialog dialog = new BluetoothDevicesDialog(this);
-dialog.show();
-```
-
-Once connected, the myPOS device will be saved and automatic connection will be performed the next time BluetoothDevicesDialog is launched.
-If the last connected device is not found within 10 seconds after launching the dialog, list of available devices will be shown.
 
 ## Attach connection listener
 
@@ -443,3 +442,4 @@ Operation Print is terminated due incorrect print data is provided.
 
  - POS_STATUS_INCORRECT_LOGO_INDEX
 Operation Print is terminated due incorrect logo index is provided.
+
