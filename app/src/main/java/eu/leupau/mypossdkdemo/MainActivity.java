@@ -19,8 +19,8 @@ import android.widget.Toast;
 
 import java.util.UUID;
 
-import eu.leupau.icardpossdk.BluetoothDevicesDialog;
 import eu.leupau.icardpossdk.ConnectionListener;
+import eu.leupau.icardpossdk.ConnectionType;
 import eu.leupau.icardpossdk.Currency;
 import eu.leupau.icardpossdk.Language;
 import eu.leupau.icardpossdk.POSHandler;
@@ -46,9 +46,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private Button      mReprintBtn;
     private Button      mPrintBtn;
 
-    private POSHandler mPOSHandler;
+    private POSHandler  mPOSHandler;
 
-    private Toast mToast;
+    private Toast       mToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +77,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         ( (TextView) findViewById(R.id.version)).setText("v. " + POSHandler.SDK_VERSION);
 
-        POSHandler.setCurrency(Currency.HRK);
+        POSHandler.setConnectionType(ConnectionType.USB);
+        POSHandler.setCurrency(Currency.EUR);
         POSHandler.setLanguage(Language.BULGARIAN);
         POSHandler.setDefaultReceiptConfig(POSHandler.RECEIPT_PRINT_ONLY_MERCHANT_COPY);
         mPOSHandler = POSHandler.getInstance();
@@ -101,7 +102,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onDestroy(){
-        unregisterReceiver(mReceiver);
+        if( mReceiver != null )
+            unregisterReceiver(mReceiver);
         super.onDestroy();
     }
 
@@ -143,7 +145,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
                         mTerminalType.setVisibility(View.VISIBLE);
 
-                        mTerminalType.setText(device.getName().equalsIgnoreCase("") ? device.getAddress() : device.getName());
+                        if( device == null )
+                            mTerminalType.setText("E500");
+                        else
+                            mTerminalType.setText(device.getName().equalsIgnoreCase("") ? device.getAddress() : device.getName());
+
                         setEnabled(true);
                     }
                 });
@@ -167,9 +173,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        if( view.getId() == mConnectBtn.getId()){
-            BluetoothDevicesDialog dialog = new BluetoothDevicesDialog(this);
-            dialog.show();
+        if( view.getId() == mConnectBtn.getId() ){
+            POSHandler.getInstance().connectDevice(this);
             return;
         }
 
