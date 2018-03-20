@@ -77,10 +77,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         ( (TextView) findViewById(R.id.version)).setText("v. " + POSHandler.SDK_VERSION);
 
-        POSHandler.setConnectionType(ConnectionType.USB);
+        POSHandler.setConnectionType(ConnectionType.BLUETOOTH);
         POSHandler.setCurrency(Currency.EUR);
-        POSHandler.setLanguage(Language.BULGARIAN);
-        POSHandler.setDefaultReceiptConfig(POSHandler.RECEIPT_PRINT_ONLY_MERCHANT_COPY);
+        POSHandler.setLanguage(Language.ENGLISH);
+        POSHandler.setDefaultReceiptConfig(POSHandler.RECEIPT_PRINT_AUTOMATICALLY);
         mPOSHandler = POSHandler.getInstance();
 
         setEnabled(false);
@@ -231,7 +231,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         mPOSHandler.openPaymentActivity(
                 MainActivity.this /*activity*/,
                 REQUEST_CODE_MAKE_PAYMENT /*requestCode*/,
-                "10.50" /*amount*/,
+                "" /*amount*/,
                 UUID.randomUUID().toString()/*transaction reference*/
         );
     }
