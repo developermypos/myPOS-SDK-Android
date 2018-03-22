@@ -80,6 +80,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         POSHandler.setConnectionType(ConnectionType.BLUETOOTH);
         POSHandler.setCurrency(Currency.EUR);
         POSHandler.setLanguage(Language.ENGLISH);
+        POSHandler.setApplicationContext(this);
         POSHandler.setDefaultReceiptConfig(POSHandler.RECEIPT_PRINT_AUTOMATICALLY);
         mPOSHandler = POSHandler.getInstance();
 
