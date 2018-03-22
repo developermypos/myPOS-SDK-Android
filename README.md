@@ -84,6 +84,7 @@ private POSHandler  mPOSHandler;
 public void onCreate() {
 	super.onCreate();
 	POSHandler.setCurrency(Currency.EUR);
+        POSHandler.setApplicationContext(this);
  	mPOSHandler = POSHandler.getInstance();
 }
 ```
