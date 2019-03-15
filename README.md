@@ -17,8 +17,8 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
 ### Table of Contents
 
 * [Integration](#integration)
-
-  * [Dependency](#dependency)
+  
+  * [Installation](#installation)
   
   * [Initialization](#initialization)
 
@@ -48,28 +48,27 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
   
   * [POS Info statuses](#pos-info-statuses)
 
+  * [Change Package name of SDK](https://gist.github.com/developermypos/5c0e4da78465963fd12b44f69e30ae8a)
   
 # Integration
 
-As example of integration, please use the sample app provided in this repository as a reference
+## Installation
+Add the repository to your gradle dependencies:
 
-## Dependency
-
-In Android Studio open Project Structure and choose to add new Module, then 'Import .JAR/.AAR package' and navigate to your copy of icardpossdk.aar library.
-
-Add the dependency to a module in your build.gradle:
-```Java
-    compile project(':icardpossdk')
+```java
+allprojects {
+   repositories {
+      jcenter()
+   }
+}
 ```
 
-Add the following dependencies:
-```Java
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.android.support:design:25.0.1'
-    compile 'com.android.support:support-v4:25.0.1'
-    compile 'com.android.support:gridlayout-v7:25.0.1'
-    compile 'com.android.support:cardview-v7:25.0.1'
+Add the dependency to a module:
+
+```java
+implementation 'com.mypos:slavesdk:1.0.0'
 ```
+
 
 ## Initialization
 
@@ -299,7 +298,7 @@ mPOSHandler.printReceipt(receiptData);
 
 # Terminal management
 
-## Activate
+## Activate terminal
 
 Before using terminal for a first time the SDK has to initiate Terminal activation, which will setup terminal for processing transaction, setting up Terminal ID, Merchant ID etc.
 
