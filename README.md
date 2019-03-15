@@ -48,7 +48,7 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
   
   * [POS Info statuses](#pos-info-statuses)
 
-  * [Change Package name of SDK](https://gist.github.com/developermypos/5c0e4da78465963fd12b44f69e30ae8a)
+  * [Change Package name of SDK](https://gist.github.com/developermypos/462ed6df93e562f7227e336d776050ca)
   
 # Integration
 
