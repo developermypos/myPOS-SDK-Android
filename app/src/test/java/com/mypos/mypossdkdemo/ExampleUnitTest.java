@@ -1,4 +1,4 @@
-package eu.leupau.mypossdkdemo;
+package com.mypos.mypossdkdemo;
 
 import org.junit.Test;
 

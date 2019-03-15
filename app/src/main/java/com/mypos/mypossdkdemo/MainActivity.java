@@ -1,4 +1,4 @@
-package eu.leupau.mypossdkdemo;
+package com.mypos.mypossdkdemo;
 
 import android.Manifest;
 import android.app.Activity;
@@ -19,14 +19,14 @@ import android.widget.Toast;
 
 import java.util.UUID;
 
-import eu.leupau.icardpossdk.ConnectionListener;
-import eu.leupau.icardpossdk.ConnectionType;
-import eu.leupau.icardpossdk.Currency;
-import eu.leupau.icardpossdk.Language;
-import eu.leupau.icardpossdk.POSHandler;
-import eu.leupau.icardpossdk.POSInfoListener;
-import eu.leupau.icardpossdk.ReceiptData;
-import eu.leupau.icardpossdk.TransactionData;
+import com.mypos.slavesdk.ConnectionListener;
+import com.mypos.slavesdk.ConnectionType;
+import com.mypos.slavesdk.Currency;
+import com.mypos.slavesdk.Language;
+import com.mypos.slavesdk.POSHandler;
+import com.mypos.slavesdk.POSInfoListener;
+import com.mypos.slavesdk.ReceiptData;
+import com.mypos.slavesdk.TransactionData;
 
 public class MainActivity extends Activity implements View.OnClickListener{
     private static final int    REQUEST_CODE_MAKE_PAYMENT  = 1;
@@ -53,18 +53,18 @@ public class MainActivity extends Activity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(eu.leupau.mypossdkdemo.R.layout.activity_main);
 
-        mStatus         = (TextView) findViewById(R.id.status);
-        mTerminalType   = (TextView) findViewById(R.id.terminal_connection_type);
-        mConnectBtn     = (Button) findViewById(R.id.connect_btn);
-        mPurchaseBtn    = (Button) findViewById(R.id.purchase_btn);
-        mRefundBtn      = (Button) findViewById(R.id.refund_btn);
-        mDeactivateBtn  = (Button) findViewById(R.id.deactivate_btn);
-        mActivateBtn    = (Button) findViewById(R.id.activate_btn);
-        mUpdateBtn      = (Button) findViewById(R.id.update_btn);
-        mReprintBtn     = (Button) findViewById(R.id.reprint_receipt_btn);
-        mPrintBtn       = (Button) findViewById(R.id.print_receipt_btn);
+        mStatus         = (TextView) findViewById(eu.leupau.mypossdkdemo.R.id.status);
+        mTerminalType   = (TextView) findViewById(eu.leupau.mypossdkdemo.R.id.terminal_connection_type);
+        mConnectBtn     = (Button) findViewById(eu.leupau.mypossdkdemo.R.id.connect_btn);
+        mPurchaseBtn    = (Button) findViewById(eu.leupau.mypossdkdemo.R.id.purchase_btn);
+        mRefundBtn      = (Button) findViewById(eu.leupau.mypossdkdemo.R.id.refund_btn);
+        mDeactivateBtn  = (Button) findViewById(eu.leupau.mypossdkdemo.R.id.deactivate_btn);
+        mActivateBtn    = (Button) findViewById(eu.leupau.mypossdkdemo.R.id.activate_btn);
+        mUpdateBtn      = (Button) findViewById(eu.leupau.mypossdkdemo.R.id.update_btn);
+        mReprintBtn     = (Button) findViewById(eu.leupau.mypossdkdemo.R.id.reprint_receipt_btn);
+        mPrintBtn       = (Button) findViewById(eu.leupau.mypossdkdemo.R.id.print_receipt_btn);
 
         mConnectBtn.setOnClickListener(this);
         mPurchaseBtn.setOnClickListener(this);
@@ -75,7 +75,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         mReprintBtn.setOnClickListener(this);
         mPrintBtn.setOnClickListener(this);
 
-        ( (TextView) findViewById(R.id.version)).setText("v. " + POSHandler.SDK_VERSION);
+        ( (TextView) findViewById(eu.leupau.mypossdkdemo.R.id.version)).setText("v. " + POSHandler.SDK_VERSION);
 
         POSHandler.setConnectionType(ConnectionType.BLUETOOTH);
         POSHandler.setCurrency(Currency.EUR);
