@@ -26,6 +26,10 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
   
   * [Attach connection listener](#attach-connection-listener)
   
+  * [Attach pos ready listener](#attach-pos-ready-listener)
+  
+  * [Send E-Receipt](#send-e-receipt)
+    
   * [Make payment](#make-payment)
   
   * [Handle payment result](#handle-payment-result)
@@ -143,6 +147,33 @@ mPOSHandler.setConnectionListener(new ConnectionListener() {
 });
 ```
 
+
+## Attach pos ready listener
+
+```Java
+mPOSHandler.setPOSReadyListener(new POSReadyListener() {
+    @Override
+    public void onPOSReady() {
+        // now you can start a transaction
+    }
+});
+```
+
+## Send E-Receipt
+
+In case you want to use email/phone receipt you have to choose POSHandler.RECEIPT_E_RECEIPT receipt configuration.
+
+Following listener will be fired immediately after transaction is approved:
+
+```Java
+POSHandler.getInstance().setPOSCredentialsListener(new POSCredentialsListener() {
+    @Override
+    public void askForCredentials(final CredentialsListener listener) {
+	listener.onCredentialsSet("email@example.com"); // instead of email you can pass a phone number
+    }
+});
+```
+
 ## Make payment
 
 Once initialization is completed, you can start using the myPOS SDK Android to accept card payments.
@@ -199,6 +230,13 @@ mPOSHandler.setPOSInfoListener(new POSInfoListener() {
     @Override
     public void onTransactionComplete(final TransactionData transactionData) {
         // Handle the response here
+    }
+});
+
+POSHandler.getInstance().setTransactionClearedListener(new PosTransactionClearedListener() {
+    @Override
+    public void onComplete(int phStatus) {
+	// transaction is cleared and fully completed, terminal is ready for new operations
     }
 });
 ```
@@ -261,6 +299,13 @@ mPOSHandler.setPOSInfoListener(new POSInfoListener() {
     @Override
     public void onTransactionComplete(final TransactionData transactionData) {
         // Handle the response here
+    }
+});
+
+POSHandler.getInstance().setTransactionClearedListener(new PosTransactionClearedListener() {
+    @Override
+    public void onComplete(int phStatus) {
+	// transaction is cleared and fully completed, terminal is ready for new operations
     }
 });
 ```
