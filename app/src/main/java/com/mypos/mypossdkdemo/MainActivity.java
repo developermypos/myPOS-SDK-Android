@@ -17,8 +17,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.UUID;
-
 import com.mypos.slavesdk.ConnectionListener;
 import com.mypos.slavesdk.ConnectionType;
 import com.mypos.slavesdk.Currency;
@@ -27,6 +25,8 @@ import com.mypos.slavesdk.POSHandler;
 import com.mypos.slavesdk.POSInfoListener;
 import com.mypos.slavesdk.ReceiptData;
 import com.mypos.slavesdk.TransactionData;
+
+import java.util.UUID;
 
 public class MainActivity extends Activity implements View.OnClickListener{
     private static final int    REQUEST_CODE_MAKE_PAYMENT  = 1;
@@ -161,7 +161,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private void setPosInfoListener(){
         mPOSHandler.setPOSInfoListener(new POSInfoListener() {
             @Override
-            public void onPOSInfoReceived(final int command, final int status, final String description) {
+            public void onPOSInfoReceived(final int command, final int status, final String description, Bundle bundle) {
                 // handle pos info events here
             }
 

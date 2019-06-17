@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/MyPosSDKDemo.iml" filepath="$PROJECT_DIR$/MyPosSDKDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/myPOS-SDK-Android.iml" filepath="$PROJECT_DIR$/myPOS-SDK-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/slavesdk/slavesdk.iml" filepath="$PROJECT_DIR$/slavesdk/slavesdk.iml" />
       <module fileurl="file://$PROJECT_DIR$/slavesdk/slavesdk.iml" filepath="$PROJECT_DIR$/slavesdk/slavesdk.iml" />
     </modules>
   </component>
