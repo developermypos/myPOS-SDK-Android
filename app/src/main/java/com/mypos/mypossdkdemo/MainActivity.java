@@ -161,7 +161,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private void setPosInfoListener(){
         mPOSHandler.setPOSInfoListener(new POSInfoListener() {
             @Override
-            public void onPOSInfoReceived(final int command, final int status, final String description, Bundle bundle) {
+            public void onPOSInfoReceived(final int command, final int status, final String description) {
                 // handle pos info events here
             }
 
