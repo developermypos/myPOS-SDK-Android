@@ -70,7 +70,7 @@ allprojects {
 Add the dependency to a module:
 
 ```java
-implementation 'com.mypos:slavesdk-beta:2.0.6'
+implementation 'com.mypos:slavesdk-beta:2.0.7'
 ```
 
 
