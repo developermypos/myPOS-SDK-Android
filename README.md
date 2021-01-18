@@ -264,7 +264,7 @@ Refund via direct SDK method:
 Transaction reference is optional parameter and can be set as null.
 
 ```Java
-mPOSHandler.purchase(
+mPOSHandler.refund(
 	"10.50" /*amount*/, 
 	UUID.randomUUID().toString() /*transaction reference*/, 
 	POSHandler.RECEIPT_PRINT_AUTOMATICALLY /*receipt configuration*/ );
