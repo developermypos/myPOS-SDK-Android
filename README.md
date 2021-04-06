@@ -120,7 +120,7 @@ POSHandler.getInstance().isTerminalBusy();
 Choose connection type:
 
 ```Java
-POSHandler.setConnectionType(ConnectionType.BLUETOOTH);
+POSHandler.setConnectionType(ConnectionType.BLUETOOTH); // Use ConnectionType.USB for usb connection type
 ```
 
 ```Java
