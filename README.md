@@ -62,7 +62,7 @@ Add the repository to your gradle dependencies:
 ```java
 allprojects {
    repositories {
-      jcenter()
+   	mavenCentral()
    }
 }
 ```
