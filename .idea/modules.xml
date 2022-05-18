@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyPosSDKDemo.iml" filepath="$PROJECT_DIR$/MyPosSDKDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/myPOS-SDK-Android.iml" filepath="$PROJECT_DIR$/myPOS-SDK-Android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/slavesdk/slavesdk.iml" filepath="$PROJECT_DIR$/slavesdk/slavesdk.iml" />
-      <module fileurl="file://$PROJECT_DIR$/slavesdk/slavesdk.iml" filepath="$PROJECT_DIR$/slavesdk/slavesdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/myPOS-SDK-Android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/myPOS-SDK-Android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/myPOS-SDK-Android.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/myPOS-SDK-Android.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/myPOS-SDK-Android.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/myPOS-SDK-Android.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/myPOS-SDK-Android.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/myPOS-SDK-Android.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/slavesdk/myPOS-SDK-Android.slavesdk.iml" filepath="$PROJECT_DIR$/.idea/modules/slavesdk/myPOS-SDK-Android.slavesdk.iml" />
     </modules>
   </component>
 </project>

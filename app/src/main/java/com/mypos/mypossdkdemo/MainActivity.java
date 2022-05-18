@@ -11,11 +11,12 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import com.mypos.slavesdk.ConnectionListener;
 import com.mypos.slavesdk.ConnectionType;
@@ -110,7 +111,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     private void checkPermissions(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this,  Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_COARSE_LOCATION);
+            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_COARSE_LOCATION);
         }
     }
 
@@ -161,7 +162,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private void setPosInfoListener(){
         mPOSHandler.setPOSInfoListener(new POSInfoListener() {
             @Override
-            public void onPOSInfoReceived(final int command, final int status, final String description) {
+            public void onPOSInfoReceived(final int command, final int status, final String description, Bundle extra) {
                 // handle pos info events here
             }
 

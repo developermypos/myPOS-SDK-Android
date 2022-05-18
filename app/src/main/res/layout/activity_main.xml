@@ -1,175 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android           ="http://schemas.android.com/apk/res/android"
-    xmlns:tools             ="http://schemas.android.com/tools"
-    android:layout_width    ="match_parent"
-    android:layout_height   ="match_parent">
-
     <RelativeLayout
+        xmlns:android           ="http://schemas.android.com/apk/res/android"
+        xmlns:tools             ="http://schemas.android.com/tools"
         android:layout_width    ="match_parent"
-        android:layout_height   ="match_parent"
-        android:paddingBottom   ="@dimen/activity_vertical_margin"
-        android:paddingLeft     ="@dimen/activity_horizontal_margin"
-        android:paddingRight    ="@dimen/activity_horizontal_margin"
-        android:paddingTop      ="@dimen/activity_vertical_margin">
+        android:layout_height   ="match_parent">
 
-        <TextView
-            android:id              ="@+id/title"
+        <RelativeLayout
             android:layout_width    ="match_parent"
-            android:layout_height   ="wrap_content"
-            android:text            ="POS SDK TEST APP"
-            android:textSize        ="24sp"
-            android:textStyle       ="bold"
-            android:gravity         ="center_horizontal"/>
-
-        <TextView
-            android:id              ="@+id/status"
-            android:layout_width    ="match_parent"
-            android:layout_height   ="wrap_content"
-            android:layout_below    ="@+id/title"
-            android:layout_marginTop="10dip"
-            android:text            ="Not connected"
-            android:textSize        ="18sp"
-            android:textStyle       ="bold"
-            android:gravity         ="center_horizontal"/>
-
-        <TextView
-            android:id              ="@+id/terminal_connection_type"
-            android:layout_width    ="match_parent"
-            android:layout_height   ="wrap_content"
-            android:layout_below    ="@+id/status"
-            android:layout_marginTop="10dip"
-            android:text            ="Not connected"
-            android:textSize        ="18sp"
-            android:textStyle       ="bold"
-            android:gravity         ="center_horizontal"
-            android:visibility      ="invisible"/>
-
-        <Button
-            android:id              ="@+id/connect_btn"
-            android:layout_width    ="200dip"
-            android:layout_height   ="wrap_content"
-            android:layout_below    ="@+id/terminal_connection_type"
-            android:layout_marginTop="15dip"
-            android:layout_centerHorizontal="true"
-            android:text            ="Connect device"
-            android:background      ="@drawable/button_selector"/>
-
-        <Button
-            android:id              ="@+id/purchase_btn"
-            android:layout_width    ="200dip"
-            android:layout_height   ="wrap_content"
-            android:layout_below    ="@+id/connect_btn"
-            android:layout_marginTop="8dip"
-            android:layout_centerHorizontal="true"
-            android:text            ="Purchase"
-            android:background      ="@drawable/button_selector"/>
-
-        <Button
-            android:id              ="@+id/refund_btn"
-            android:layout_width    ="200dip"
-            android:layout_height   ="wrap_content"
-            android:layout_below    ="@+id/purchase_btn"
-            android:layout_marginTop="8dip"
-            android:layout_centerHorizontal="true"
-            android:text            ="REFUND"
-            android:background      ="@drawable/button_selector"/>
-
-        <Button
-            android:id              ="@+id/deactivate_btn"
-            android:layout_width    ="200dip"
-            android:layout_height   ="wrap_content"
-            android:layout_below    ="@+id/refund_btn"
-            android:layout_marginTop="8dip"
-            android:layout_centerHorizontal="true"
-            android:text            ="DEACTIVATE"
-            android:background      ="@drawable/button_selector"/>
-
-        <Button
-            android:id              ="@+id/activate_btn"
-            android:layout_width    ="200dip"
-            android:layout_height   ="wrap_content"
-            android:layout_below    ="@+id/deactivate_btn"
-            android:layout_marginTop="8dip"
-            android:layout_centerHorizontal="true"
-            android:text            ="ACTIVATE"
-            android:background      ="@drawable/button_selector"/>
-
-        <Button
-            android:id              ="@+id/update_btn"
-            android:layout_width    ="200dip"
-            android:layout_height   ="wrap_content"
-            android:layout_below    ="@+id/activate_btn"
-            android:layout_marginTop="8dip"
-            android:layout_centerHorizontal="true"
-            android:text            ="UPDATE"
-            android:background      ="@drawable/button_selector"/>
-
-        <Button
-            android:id              ="@+id/reprint_receipt_btn"
-            android:layout_width    ="200dip"
-            android:layout_height   ="wrap_content"
-            android:layout_below    ="@+id/update_btn"
-            android:layout_marginTop="8dip"
-            android:layout_centerHorizontal="true"
-            android:text            ="REPRINT RECEIPT"
-            android:background      ="@drawable/button_selector"/>
-
-        <Button
-            android:id              ="@+id/print_receipt_btn"
-            android:layout_width    ="200dip"
-            android:layout_height   ="wrap_content"
-            android:layout_below    ="@+id/reprint_receipt_btn"
-            android:layout_marginTop="8dip"
-            android:layout_centerHorizontal="true"
-            android:text            ="PRINT EXT"
-            android:background      ="@drawable/button_selector"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id              ="@+id/progress_layout"
-        android:layout_width    ="match_parent"
-        android:layout_height   ="match_parent"
-        android:background      ="#77000000"
-        android:clickable       ="true"
-        android:visibility      ="gone">
-
-        <LinearLayout
-            android:layout_width            ="220dip"
-            android:layout_height           ="wrap_content"
-            android:paddingTop              ="15dip"
-            android:paddingBottom           ="15dip"
-            android:orientation             ="vertical"
-            android:layout_centerInParent   ="true"
-            android:gravity                 ="center"
-            android:background              ="@drawable/white_background">
-
-            <ProgressBar
-                android:id                      ="@+id/progress_bar"
-                android:layout_width            ="wrap_content"
-                android:layout_height           ="wrap_content"/>
+            android:layout_height   ="match_parent"
+            android:paddingBottom   ="@dimen/activity_vertical_margin"
+            android:paddingLeft     ="@dimen/activity_horizontal_margin"
+            android:paddingRight    ="@dimen/activity_horizontal_margin"
+            android:paddingTop      ="@dimen/activity_vertical_margin">
 
             <TextView
-                android:id                      ="@+id/progress_text"
-                android:layout_width            ="match_parent"
-                android:layout_height           ="wrap_content"
-                android:layout_marginRight      ="10dip"
-                android:layout_marginLeft       ="10dip"
-                android:layout_marginTop        ="5dip"
-                android:gravity                 ="center"/>
+                android:id              ="@+id/title"
+                android:layout_width    ="match_parent"
+                android:layout_height   ="wrap_content"
+                android:text            ="POS SDK TEST APP"
+                android:textSize        ="24sp"
+                android:textStyle       ="bold"
+                android:gravity         ="center_horizontal"/>
 
-        </LinearLayout>
+            <TextView
+                android:id              ="@+id/status"
+                android:layout_width    ="match_parent"
+                android:layout_height   ="wrap_content"
+                android:layout_below    ="@+id/title"
+                android:layout_marginTop="10dip"
+                android:text            ="Not connected"
+                android:textSize        ="18sp"
+                android:textStyle       ="bold"
+                android:gravity         ="center_horizontal"/>
+
+            <TextView
+                android:id              ="@+id/terminal_connection_type"
+                android:layout_width    ="match_parent"
+                android:layout_height   ="wrap_content"
+                android:layout_below    ="@+id/status"
+                android:layout_marginTop="10dip"
+                android:text            ="Not connected"
+                android:textSize        ="18sp"
+                android:textStyle       ="bold"
+                android:gravity         ="center_horizontal"
+                android:visibility      ="invisible"/>
+
+            <Button
+                android:id              ="@+id/connect_btn"
+                android:layout_width    ="200dip"
+                android:layout_height   ="wrap_content"
+                android:layout_below    ="@+id/terminal_connection_type"
+                android:layout_marginTop="15dip"
+                android:layout_centerHorizontal="true"
+                android:text            ="Connect device"
+                android:background      ="@drawable/button_selector"/>
+
+            <Button
+                android:id              ="@+id/purchase_btn"
+                android:layout_width    ="200dip"
+                android:layout_height   ="wrap_content"
+                android:layout_below    ="@+id/connect_btn"
+                android:layout_marginTop="8dip"
+                android:layout_centerHorizontal="true"
+                android:text            ="Purchase"
+                android:background      ="@drawable/button_selector"/>
+
+            <Button
+                android:id              ="@+id/refund_btn"
+                android:layout_width    ="200dip"
+                android:layout_height   ="wrap_content"
+                android:layout_below    ="@+id/purchase_btn"
+                android:layout_marginTop="8dip"
+                android:layout_centerHorizontal="true"
+                android:text            ="REFUND"
+                android:background      ="@drawable/button_selector"/>
+
+            <Button
+                android:id              ="@+id/deactivate_btn"
+                android:layout_width    ="200dip"
+                android:layout_height   ="wrap_content"
+                android:layout_below    ="@+id/refund_btn"
+                android:layout_marginTop="8dip"
+                android:layout_centerHorizontal="true"
+                android:text            ="DEACTIVATE"
+                android:background      ="@drawable/button_selector"/>
+
+            <Button
+                android:id              ="@+id/activate_btn"
+                android:layout_width    ="200dip"
+                android:layout_height   ="wrap_content"
+                android:layout_below    ="@+id/deactivate_btn"
+                android:layout_marginTop="8dip"
+                android:layout_centerHorizontal="true"
+                android:text            ="ACTIVATE"
+                android:background      ="@drawable/button_selector"/>
+
+            <Button
+                android:id              ="@+id/update_btn"
+                android:layout_width    ="200dip"
+                android:layout_height   ="wrap_content"
+                android:layout_below    ="@+id/activate_btn"
+                android:layout_marginTop="8dip"
+                android:layout_centerHorizontal="true"
+                android:text            ="UPDATE"
+                android:background      ="@drawable/button_selector"/>
+
+            <Button
+                android:id              ="@+id/reprint_receipt_btn"
+                android:layout_width    ="200dip"
+                android:layout_height   ="wrap_content"
+                android:layout_below    ="@+id/update_btn"
+                android:layout_marginTop="8dip"
+                android:layout_centerHorizontal="true"
+                android:text            ="REPRINT RECEIPT"
+                android:background      ="@drawable/button_selector"/>
+
+            <Button
+                android:id              ="@+id/print_receipt_btn"
+                android:layout_width    ="200dip"
+                android:layout_height   ="wrap_content"
+                android:layout_below    ="@+id/reprint_receipt_btn"
+                android:layout_marginTop="8dip"
+                android:layout_centerHorizontal="true"
+                android:text            ="PRINT EXT"
+                android:background      ="@drawable/button_selector"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id              ="@+id/progress_layout"
+            android:layout_width    ="match_parent"
+            android:layout_height   ="match_parent"
+            android:background      ="#77000000"
+            android:clickable       ="true"
+            android:visibility      ="gone">
+
+            <LinearLayout
+                android:layout_width            ="220dip"
+                android:layout_height           ="wrap_content"
+                android:paddingTop              ="15dip"
+                android:paddingBottom           ="15dip"
+                android:orientation             ="vertical"
+                android:layout_centerInParent   ="true"
+                android:gravity                 ="center"
+                android:background              ="@drawable/white_background">
+
+                <ProgressBar
+                    android:id                      ="@+id/progress_bar"
+                    android:layout_width            ="wrap_content"
+                    android:layout_height           ="wrap_content"/>
+
+                <TextView
+                    android:id                      ="@+id/progress_text"
+                    android:layout_width            ="match_parent"
+                    android:layout_height           ="wrap_content"
+                    android:layout_marginRight      ="10dip"
+                    android:layout_marginLeft       ="10dip"
+                    android:layout_marginTop        ="5dip"
+                    android:gravity                 ="center"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id                          ="@+id/version"
+            android:layout_width                ="wrap_content"
+            android:layout_height               ="wrap_content"
+            android:layout_alignParentBottom    ="true"
+            android:layout_alignParentRight     ="true"
+            android:layout_marginRight          ="5dip"
+            android:layout_marginBottom         ="5dip"/>
 
     </RelativeLayout>
-
-    <TextView
-        android:id                          ="@+id/version"
-        android:layout_width                ="wrap_content"
-        android:layout_height               ="wrap_content"
-        android:layout_alignParentBottom    ="true"
-        android:layout_alignParentRight     ="true"
-        android:layout_marginRight          ="5dip"
-        android:layout_marginBottom         ="5dip"/>
-
-</RelativeLayout>
