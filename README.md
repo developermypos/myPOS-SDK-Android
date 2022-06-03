@@ -127,12 +127,24 @@ POSHandler.setConnectionType(ConnectionType.BLUETOOTH); // Use ConnectionType.US
 POSHandler.getInstance().connectDevice(context);
 ```
 
-If connection type is set to BLUETOOTH, make sure ACCESS_COARSE_LOCATION permission is given in order to discover available bluetooth devices.
+If connection type is set to BLUETOOTH, make sure needed permissions are given in order to discover available bluetooth devices.
 
 ```Java
-if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, 
-	Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_COARSE_LOCATION);
+if (POSHandler.getInstance().checkPermissions(context)) {
+    // continue...
+} else {
+    // permissions request is sent...
+}
+ ```
+ 
+ Handle permissions result.
+ 
+ ```Java
+@Override
+public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    if (requestCode == POSHandler.PERMISSIONS_REQUEST_CODE) {
+        // check permissions result...
+    }
 }
 ```
 
