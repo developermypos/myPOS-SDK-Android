@@ -8,11 +8,10 @@ No sensitive card data is ever passed through to or stored on the merchant&#39;s
 
 1. Merchant account on [www.myPOS.eu](https://www.mypos.eu/) (or received a test account).
 2. Received myPOS terminal
-3. Requested Access   [Developers myPOS](http://developers.mypos.eu) site.
-4.	Deployment Target Android 4.0.3 or later.
-5.	Android SDK Platform 25 or later.
-6.	Android SDK Build-tools version 25.0.0 or later.
-7.	Android Device.
+3.	Deployment Target Android 4.0.3 or later.
+4.	Android SDK Platform 25 or later.
+5.	Android SDK Build-tools version 25.0.0 or later.
+6.	Android Device.
 
 ### Table of Contents
 
